@@ -37,4 +37,18 @@ if (isset($_POST['operacion'])){
     // PASO 2: Enviar el array al método registrar
     $estudiante->registrarEstudiante($datosGuardar);
   }
+
+  if($_POST['operacion'] == 'listar'){
+    $data = $sede->listarEstudiantes();
+    
+    //Enviar los datos a la vista
+    //Si contiene información, si no está vacío...
+    if ($data){
+      foreach($data as $registro){
+        
+      }
+    }else{
+      echo "<option value=''>No encontramos datos</option>";
+    }
+  }
 }

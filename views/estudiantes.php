@@ -19,6 +19,27 @@
   <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
     Launch
   </button>
+
+  <div class="container">
+    <table id="tabla-estudiantes" class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Apellidos</th>
+          <th>Nombres</th>
+          <th>Tipo</th>
+          <th>Documento</th>
+          <th>Nacimiento</th>
+          <th>Carrera</th>
+          <th>Operaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+      </tbody>
+    </table>
+  </div>
   
   <!-- Modal Body -->
   <div class="modal fade" id="modal-estudiante" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
