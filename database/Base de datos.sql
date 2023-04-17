@@ -87,7 +87,55 @@ SELECT * FROM estudiantes;
 --  CREAMOS LA TABLA CARGOS
 
 CREATE TABLE cargos(
-	idcargo PRIMARY KEY AUTO_INCREMENT,
-	cargo VARCHAR(50) NOT NULL,
-	CONSTRAINT uk_spu_cargos
+	idcargo INT PRIMARY KEY AUTO_INCREMENT,
+	cargo VARCHAR(50) NULL
 )ENGINE = INNODB;
+
+CREATE TABLE colaboradores(
+	idcolaboradores INT PRIMARY KEY AUTO_INCREMENT,
+	apellidos		VARCHAR(30)		NOT NULL,
+	nombres 			VARCHAR(30)		NOT NULL,
+	idcargo			INT 				NOT NULL,
+	idsede			INT 				NOT NULL,
+	telefono			CHAR(9)			NOT NULL,
+	tipocontrato	CHAR(1)			NOT NULL,
+	cv					VARCHAR(100)	NULL,
+	direccion		VARCHAR(40)		NOT NULL,
+	fecharegistro	DATETIME			NOT NULL DEFAULT NOW(),
+	fechaupdate		DATETIME			NULL,
+	estado 			CHAR(1)			NOT NULL DEFAULT '1',
+	CONSTRAINT fk_idcargo_car FOREIGN KEY (idcargo) REFERENCES cargos (idcargo),
+	CONSTRAINT fk_idsede_car FOREIGN KEY (idsede) REFERENCES sedes (idsede)
+)ENGINE = INNODB;
+
+-- DROP TABLE colaboradores;
+
+SELECT * FROM colaboradores;
+SELECT * FROM sedes;
+SELECT * FROM cargos;
+INSERT INTO cargos (cargo) VALUES
+	('Instructor'),
+	('Jefe Centro'),
+	('Asist. Administrativo'),
+	('Asist. Académico'),
+	('Coordinador ETI'),
+	('Coordinador CIS');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

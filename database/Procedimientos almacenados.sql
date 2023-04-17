@@ -74,10 +74,69 @@ CALL spu_estudiantes_listar();
 SELECT * FROM estudiantes;
 SELECT * FROM carreras;
 SELECT * FROM escuelas;
+SELECT * FROM colaboradores;
 UPDATE estudiantes
 	SET fotografia = NULL
 	WHERE fotografia = 'unafoto.jpg' OR
 			fotografia = '';
 
 
+--  ================================================================
+--  PROCEDIMIENTOS ALMACENADO DE LA TABLA COLABORADORES
 
+-- LISTAR COLABORADORES (consulta multitabla)
+DELIMITER $$
+CREATE PROCEDURE spu_colaboradores_listar()
+BEGIN
+	SELECT 
+			COL.idcolaboradores,
+			COL.apellidos,
+			COL.nombres,
+			CAR.cargo,
+			SED.sede,
+			COL.telefono,
+			COL.tipocontrato,
+			COL.cv,
+			COL.direccion,
+			COL.fecharegistro,
+			COL.estado
+		FROM colaboradores COL
+		INNER JOIN sedes SED ON SED.idsede = COL.idsede
+		INNER JOIN cargos CAR ON CAR.idcargo = COL.idcargo
+		WHERE COL.estado = '1';
+END $$
+
+
+
+-- REGISTRAR COLABORADORES
+DELIMITER $$
+CREATE PROCEDURE spu_colaboradores_registrar
+(
+	IN _apellidos			VARCHAR(30),
+	IN _nombres 			VARCHAR(30),
+	IN _idcargo				INT,
+	IN _idsede				INT,
+	IN _telefono			CHAR(9),
+	IN _tipocontrato 		CHAR(1),
+	IN _cv 					VARCHAR(100),
+	IN _direccion 			VARCHAR(40)
+)
+BEGIN
+	-- Validar el contenido de _fotografia
+	IF _cv = '' THEN 
+		SET _cv = NULL;
+	END IF;
+
+	INSERT INTO colaboradores 
+	(apellidos, nombres, idcargo, idsede, telefono, tipocontrato, cv, direccion) VALUES
+	(_apellidos, _nombres, _idcargo, _idsede, _telefono, _tipocontrato, _cv, _direccion);
+END $$
+
+CALL spu_colaboradores_registrar('Yataco Peña', 'Miguel Angel', 1, 1, '987654321', 'C', '', 'Calle  Senati');
+CALL spu_colaboradores_registrar('Zarate Apolaya', 'Fiorela', 2, 3, '863254796', 'P', '', 'Calle  Lima');
+
+
+--  ELIMINAR COLABORADORES
+
+
+--  ACTUALIZAR COLABORADORES
