@@ -83,3 +83,11 @@ INSERT INTO estudiantes
 	('Quintana', 'Tania', '33334444', '2001-05-05', 9, 4);
 
 SELECT * FROM estudiantes;
+
+--  CREAMOS LA TABLA CARGOS
+
+CREATE TABLE cargos(
+	idcargo PRIMARY KEY AUTO_INCREMENT,
+	cargo VARCHAR(50) NOT NULL,
+	CONSTRAINT uk_spu_cargos
+)ENGINE = INNODB;

@@ -79,3 +79,5 @@ UPDATE estudiantes
 	WHERE fotografia = 'unafoto.jpg' OR
 			fotografia = '';
 
+
+
