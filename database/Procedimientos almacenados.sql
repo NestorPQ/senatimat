@@ -72,5 +72,6 @@ END $$
 CALL spu_carreras_listar(3);
 CALL spu_estudiantes_listar();
 SELECT * FROM estudiantes;
-SELECT * FROM carreras0;
+SELECT * FROM carreras;
+SELECT * FROM escuelas;
 
