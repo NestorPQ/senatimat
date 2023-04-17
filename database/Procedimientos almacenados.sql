@@ -74,4 +74,8 @@ CALL spu_estudiantes_listar();
 SELECT * FROM estudiantes;
 SELECT * FROM carreras;
 SELECT * FROM escuelas;
+UPDATE estudiantes
+	SET fotografia = NULL
+	WHERE fotografia = 'unafoto.jpg' OR
+			fotografia = '';
 

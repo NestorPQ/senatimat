@@ -39,16 +39,56 @@ if (isset($_POST['operacion'])){
   }
 
   if($_POST['operacion'] == 'listar'){
-    $data = $sede->listarEstudiantes();
-    
-    //Enviar los datos a la vista
-    //Si contiene información, si no está vacío...
-    if ($data){
-      foreach($data as $registro){
-        
+    $datosObtenidos = $estudiante->listarEstudiantes();
+
+    if ($datosObtenidos){
+      $numeroFila = 1;
+      $datosEstudiante = '';
+      $botonNulo = "
+        <a href='#' class='btn btn-sm btn-warning' title='No tiene fotografia' style='float: right;'>
+          <i class='bi bi-eye-slash'></i>
+        </a>" ;
+
+      foreach($datosObtenidos as $registro){
+
+        $datosEstudiante = $registro['apellidos']. ' ' . $registro['nombres'] ;
+
+        //  La primera parte a RENDERIZAR, es lo standart (siempre se muestra)
+        echo "
+          <tr>
+            <td>{$numeroFila}</td>
+            <td>{$registro['apellidos']}</td>
+            <td>{$registro['nombres']}</td>
+            <td>{$registro['tipodocumento']}</td>
+            <td>{$registro['nrodocumento']}</td>
+            <td>{$registro['fechanacimiento']}</td>
+            <td>{$registro['carrera']}</td>
+            <td>    
+              <a href='#' data-idplato='{$registro['idestudiante']}' class='btn btn-danger btn-sm eliminar'>
+                <i class='bi bi-trash3'></i>
+              </a>
+              <a href='#' data-idplato='{$registro['idestudiante']}' class='btn btn-success btn-sm editar'>
+                <i class='bi bi-pencil'></i>
+              <a>";
+
+            //  La segunda parte a RENDERIZAR, el el botón VER FOTOGRAFÍA
+            if($registro['fotografia'] == ''){
+              echo $botonNulo;
+            }else {
+              echo "<a href='../views/img/fotografias/{$registro['fotografia']}' data-lightbox='{$registro['idestudiante']}' data-title='{$datosEstudiante}' class='btn btn-sm btn-warning' style='float: right;'>
+              <i class='bi bi-eye-fill'></i>
+              </a> ";
+            }
+
+            //  La tercera parte a RENDERIZAR, cierre de la fila
+            echo "
+                </td>
+              </tr>  
+            ";
+
+          echo("lista de usuarios");
+          $numeroFila++;
       }
-    }else{
-      echo "<option value=''>No encontramos datos</option>";
     }
   }
 }

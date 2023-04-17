@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <title>Title</title>
+  <title>Estudiantes</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,17 +11,48 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="../dist/lightbox2/src/css/lightbox.css">
+
 </head>
 
 <body>
   
-  <!-- Modal trigger button -->
+  <!-- Modal trigger button
   <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
     Launch
-  </button>
+  </button> -->
+  
+  <!-- Inicio del card -->
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header bg-secondary text-light">
+        <div class="row">
 
+        <div class="col-md-6">
+          <strong>Lista de estudiantes</strong>
+        </div>
+        <div class="col-md-6 text-end">
+          <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
+            <i class="bi bi-person-plus">
+              Agregar Estudiante
+            </i>
+          </button>
+        </div>        
+      </div>
+
+
+    </div>
+  </div>
+</div>
+  <!-- Fin del card -->
+  
   <div class="container">
     <table id="tabla-estudiantes" class="table table-striped table-sm">
+
+
       <thead>
         <tr>
           <th>#</th>
@@ -133,6 +164,9 @@
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <!-- Lightbox JS -->
+  <script src="../dist/lightbox2/src/js/lightbox.js"></script>
+
   <script>
     $(document).ready(function (){
       
@@ -208,6 +242,20 @@
         });
       }
 
+      function mostrarEstudiantes(){
+        console.log("Mostrar Estudiantes");
+
+        $.ajax({
+          url: '../controllers/estudiante.controller.php',
+          type: 'POST',
+          data: {operacion: 'listar'},
+          dataType: 'text',
+          success: function (result){
+            $("#tabla-estudiantes tbody").html(result);
+          }
+        });
+      }
+
       $("#guardar-estudiante").click(preguntarRegistro);
 
       //Al cambiar una escuela, se actualizará las carreras
@@ -235,6 +283,10 @@
         obtenerSedes();
         obtenerEscuelas();
       });
+
+
+      //  ejecucion automatica
+      mostrarEstudiantes();
 
     });
   </script>
