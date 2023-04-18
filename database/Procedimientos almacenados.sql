@@ -48,6 +48,11 @@ CALL spu_estudiantes_registrar('Munayco', 'José', 'D', '77779999', '1999-09-20'
 CALL spu_estudiantes_registrar('Prada', 'Teresa', 'C', '01234567', '2002-09-25', 3, 2, '');
 SELECT * FROM estudiantes;
 */
+DELIMITER $$
+CREATE PROCEDURE spu_cargos_listar()
+BEGIN 
+	SELECT * FROM cargos ORDER BY 2;
+END $$
 
 DELIMITER $$
 CREATE PROCEDURE spu_sedes_listar()
@@ -71,6 +76,7 @@ END $$
 
 CALL spu_carreras_listar(3);
 CALL spu_estudiantes_listar();
+CALL spu_cargos_listar();
 SELECT * FROM estudiantes;
 SELECT * FROM carreras;
 SELECT * FROM escuelas;
@@ -89,7 +95,7 @@ DELIMITER $$
 CREATE PROCEDURE spu_colaboradores_listar()
 BEGIN
 	SELECT 
-			COL.idcolaboradores,
+			COL.idcolaborador,
 			COL.apellidos,
 			COL.nombres,
 			CAR.cargo,
@@ -127,7 +133,7 @@ BEGIN
 		SET _cv = NULL;
 	END IF;
 
-	INSERT INTO colaboradores 
+	INSERT INTO colaboradores `senatimat`
 	(apellidos, nombres, idcargo, idsede, telefono, tipocontrato, cv, direccion) VALUES
 	(_apellidos, _nombres, _idcargo, _idsede, _telefono, _tipocontrato, _cv, _direccion);
 END $$

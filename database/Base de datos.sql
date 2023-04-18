@@ -92,7 +92,7 @@ CREATE TABLE cargos(
 )ENGINE = INNODB;
 
 CREATE TABLE colaboradores(
-	idcolaboradores INT PRIMARY KEY AUTO_INCREMENT,
+	idcolaborador INT PRIMARY KEY AUTO_INCREMENT,
 	apellidos		VARCHAR(30)		NOT NULL,
 	nombres 			VARCHAR(30)		NOT NULL,
 	idcargo			INT 				NOT NULL,
@@ -113,6 +113,7 @@ CREATE TABLE colaboradores(
 SELECT * FROM colaboradores;
 SELECT * FROM sedes;
 SELECT * FROM cargos;
+
 INSERT INTO cargos (cargo) VALUES
 	('Instructor'),
 	('Jefe Centro'),

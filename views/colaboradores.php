@@ -57,6 +57,82 @@
         </tbody>
       </table>
   </div>
+  <!-- Inicio del modal  -->
+
+  <div class="modal fade" id="modal-registro-colaborador" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-light">
+          <h5 class="modal-title" id="modalTitleId">Registrar Colaborador</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <form action="" autocomplete="off" id="formulario-colaborador" enctype="multipart/form-data">
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="nombres" class="form-label">Nombre:</label>
+                <input type="text" class="form-control form-control-sm" id="nombres" placeholder="nombre">
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="apellidos" class="form-label">Apellido:</label>
+                <input type="text" class="form-control form-control-sm" id="apellidos" placeholder="apellidos">
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="cargo" class="form-label">Cargo:</label>
+                <select name="cargo" id="cargo" class="form-select form-select-sm">
+                  <option value="">Seleccione</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="sede" class="form-label">Sede:</label>
+                <select name="tipodocumento" id="sede" class="form-select form-select-sm">
+                  <option value="">Seleccione</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="telefono" class="form-label">Telefono:</label>
+                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos">
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="tipocontrato" class="form-label">TipoContrato:</label>
+                <select name="sede" id="tipocontrato" class="form-select form-select-sm">
+                  <option value="">Seleccione</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" class="form-control form-control-sm" id="direccion" placeholder="direccion">
+              </div>
+              <div class="mb-3 col-md-6">
+                <!-- <label for="carrera" class="form-label">Carreras:</label>
+                <select name="carrera" id="carrera" class="form-select form-select-sm">
+                  <option value="">Seleccione</option>
+                </select> -->
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="cv">CV:</label>
+              <input type="file" id="cv" accept=".pdf" class="form-control form-control-sm">
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-sm btn-primary" id="guardar-colaborador">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin del modal -->
   
   
 

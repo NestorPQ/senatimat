@@ -23,8 +23,9 @@ if(isset($_POST['operacion'])){
             <td>{$registro['tipocontrato']}</td>
             <td>{$registro['direccion']}</td>
             <td>
-              <a href='#' data-idcolaboradores='{$registro['idcolaboradores']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
-              <a href='#' data-idcolaboradores='{$registro['idcolaboradores']}' class='btn btn-success btn-sm editar' style='float: right;'><i class='bi bi-pencil'></i></a>                     
+              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
+              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-warning btn-sm editar'><i class='bi bi-pencil'></i></a>                     
+              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-info btn-sm editar' style='float: right;'><i class='bi bi-filetype-pdf'></i></a>
             </td>
           </tr>
           

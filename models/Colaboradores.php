@@ -9,8 +9,29 @@ class Colaborador extends Conexion{
     $this->accesoBD = parent::getConexion();
   }
 
+  // Método registrar colaborador
+  public function registrarColaborador($datos = []){
+    try{
+      $consulta = $this->acceso->prepare("CALL spu_colaboradores_registrar(?,?,?,?,?,?,?,?)");
 
-  //  Método listar usuarios
+      $consulta->execute(
+        array(
+          $datos['nombres'],
+          $datos['apellidos'],
+          $datos['idcargo'],
+          $datos['idsede'],
+          $datos['telefono'],
+          $datos['tipocontrato'],
+          $datos['cv'],
+          $datos['direccion'],
+        )
+      );
+    }catch(Exception $e){
+      die($e->getMessage());
+    }
+  }
+
+  //  Método listar colaborador
   public function listarColaboradores(){
     
     try {
