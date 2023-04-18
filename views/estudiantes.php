@@ -182,6 +182,7 @@
         });
       }
 
+
       function obtenerEscuelas(){
         $.ajax({
           url: '../controllers/escuela.controller.php',
@@ -193,21 +194,23 @@
           }
         });
       }
+      
+
       function registrarEstudiante (){
         console.log("Guardando con ajax");
 
         //  Enviaremos los datos dentro de un OBJETO
         var formData = new FormData();
 
-        formData.append("operacion", "registrar");
-        formData.append("apellidos", $("#apellidos").val());
-        formData.append("nombres", $("#nombres").val());
-        formData.append("tipodocumento", $("#tipodocumento").val());
-        formData.append("nrodocumento", $("#nrodocumento").val());
-        formData.append("fechanacimiento", $("#fechanacimiento").val());
-        formData.append("idcarrera", $("#carrera").val());
-        formData.append("idsede", $("#sede").val());
-        formData.append("fotografia", $("#fotografia")[0].files[0]);
+        formData.append("operacion",        "registrar");
+        formData.append("apellidos",        $("#apellidos").val());
+        formData.append("nombres",          $("#nombres").val());
+        formData.append("tipodocumento",    $("#tipodocumento").val());
+        formData.append("nrodocumento",     $("#nrodocumento").val());
+        formData.append("fechanacimiento",  $("#fechanacimiento").val());
+        formData.append("idcarrera",        $("#carrera").val());
+        formData.append("idsede",           $("#sede").val());
+        formData.append("fotografia",       $("#fotografia")[0].files[0]);
 
         $.ajax({
           url: '../controllers/estudiante.controller.php',

@@ -88,7 +88,7 @@
               </div>
               <div class="mb-3 col-md-6">
                 <label for="sede" class="form-label">Sede:</label>
-                <select name="tipodocumento" id="sede" class="form-select form-select-sm">
+                <select name="sede" id="sede" class="form-select form-select-sm">
                   <option value="">Seleccione</option>
                 </select>
               </div>
@@ -100,8 +100,7 @@
               </div>
               <div class="mb-3 col-md-6">
                 <label for="tipocontrato" class="form-label">TipoContrato:</label>
-                <select name="sede" id="tipocontrato" class="form-select form-select-sm">
-                  <option value="">Seleccione</option>
+                <input type="text" class="form-control form-control-sm" id="tipocontrato" placeholder="tipocontrato">
                 </select>
               </div>
             </div>
@@ -147,9 +146,90 @@
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Lightbox JS -->
+    <script src="../dist/lightbox2/src/js/lightbox.js"></script>
+
   <script>
 
     $(document).ready(function(){
+
+      function obtenerSedes(){
+        $.ajax({
+          url: '../controllers/sede.controller.php',
+          type: 'POST',
+          data: {operacion: 'listar'},
+          dataType: 'text',
+          success: function(result){
+            $("#sede").html(result);
+          }
+        });
+      }
+
+      function obtenerCargos(){
+        $.ajax({
+          url: '../controllers/cargo.controller.php',
+          type: 'POST',
+          data: {operacion: 'listar'},
+          dataType: 'text',
+          success: function(result){
+            $("#cargo").html(result);
+          }
+        });
+      }
+
+      function registrarColaborador(){
+
+        console.log("Guardando con ajax");
+
+        var formData = new FormData();
+
+        formData.append("operacion",  "registrar");
+        formData.append("apellidos",    $("#apellidos").val());
+        formData.append("nombres",      $("#nombres").val());
+        formData.append("idcargo",      $("#cargo").val());
+        formData.append("idsede",       $("#sede").val());
+        formData.append("telefono",     $("#telefono").val());
+        formData.append("tipocontrato", $("#tipocontrato").val());
+        formData.append("direccion",    $("#direccion").val());
+        formData.append("cv",           $("#cv")[0].files[0]);
+        
+
+        $.ajax({
+          url: '../controllers/colaborador.controller.php',
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          cache: false,
+          success: function (){
+            console.log("Guardo");
+            $("#formulario-colaborador")[0].reset();
+            $("#modal-registro-colaborador").modal("hide");
+            alert("Guardado correctamente");
+          }
+        });
+      }
+
+      function preguntarRegistro(){
+        Swal.fire({
+          icon: 'question',
+          title: 'Registro',
+          text: '¿Está seguro de registrar al colaborador?',
+          footer: 'Desarrollado con PHP',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#3498DB',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          //Identificando acción del usuario
+          if (result.isConfirmed){
+            registrarColaborador();
+          }
+        });
+      }
       
       function mostrarColaboradores(){
         console.log("hola");
@@ -163,6 +243,17 @@
           }
         });
       }
+
+      //  Eventos
+      $("#guardar-colaborador").click(preguntarRegistro);
+
+      //  Control de inicio
+      $("#modal-registro-colaborador").on("shown.bs.modal", event =>{
+        $("#nombres").focus();
+
+        obtenerCargos();
+        obtenerSedes();
+      });
 
       //  Ejecución automatica
       mostrarColaboradores();

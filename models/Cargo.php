@@ -2,16 +2,16 @@
 
 require_once 'Conexion.php';
 
-class Cargo extends Concexion{
+class Cargo extends Conexion{
   private $accesBD;
 
   public function __CONSTRUCT(){
     $this->accesoBD = parent::getConexion();
   }
 
-  public function listarCargo(){
+  public function listarCargos(){
     try{
-      $consulta = $this-accesoBD->prepare("CALL spu_cargos_listar()");
+      $consulta = $this->accesoBD->prepare("CALL spu_cargos_listar()");
       $consulta->execute();
 
       return $consulta->fetchAll(PDO::FETCH_ASSOC);

@@ -7,7 +7,7 @@ if(isset($_POST['operacion'])){
   $cargo = new Cargo();
 
   if($_POST['operacion'] == 'listar'){
-    $data = $cargo->listarCargo();
+    $data = $cargo->listarCargos();
 
     if ($data){
       echo "<option value='' selected>Seleccione</option>";

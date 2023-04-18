@@ -76,11 +76,16 @@ END $$
 
 CALL spu_carreras_listar(3);
 CALL spu_estudiantes_listar();
-CALL spu_cargos_listar();
+
 SELECT * FROM estudiantes;
 SELECT * FROM carreras;
 SELECT * FROM escuelas;
 SELECT * FROM colaboradores;
+
+
+CALL spu_cargos_listar();
+CALL spu_sedes_listar();
+
 UPDATE estudiantes
 	SET fotografia = NULL
 	WHERE fotografia = 'unafoto.jpg' OR
@@ -114,6 +119,7 @@ END $$
 
 
 
+
 -- REGISTRAR COLABORADORES
 DELIMITER $$
 CREATE PROCEDURE spu_colaboradores_registrar
@@ -143,6 +149,61 @@ CALL spu_colaboradores_registrar('Zarate Apolaya', 'Fiorela', 2, 3, '863254796',
 
 
 --  ELIMINAR COLABORADORES
+DELIMITER $$
+CREATE PROCEDURE spu_colaborador_eliminar(IN _idcolaborador INT)
+BEGIN
+	UPDATE colaboradores 
+	SET estado = '0' 
+	WHERE idcolaborador = _idcolaborador;
+END $$
+
+CALL spu_colaborador_eliminar(13);
 
 
 --  ACTUALIZAR COLABORADORES
+-- recuperar id
+
+DELIMITER $$
+CREATE PROCEDURE spu_colaborador_recuperar_id(IN _idcolaborador INT)
+BEGIN
+	SELECT * FROM colaboradores WHERE idcolaborador = _idcolaborador;
+END $$
+
+CALL spu_colaborador_recuperar_id(3);
+
+
+--  Actualizar
+DELIMITER $$
+CREATE PROCEDURE spu_colaborador_actualizar(
+	IN _idcolaborador 	INT,
+	IN _apellidos			VARCHAR(30),
+	IN _nombres 			VARCHAR(30),
+	IN _idcargo				INT,
+	IN _idsede				INT,
+	IN _telefono			CHAR(9),
+	IN _tipocontrato 		CHAR(1),
+	IN _cv 					VARCHAR(100),
+	IN _direccion 			VARCHAR(40)
+)
+)
+BEGIN
+	UPDATE colaboradores SET
+		apellidos = _apellidos,
+		nombres = _nombres,
+		idcargo = _idcargo,
+		idsede = _idsede,
+		telefono = _telefono,
+		tipocontrato = _tipocontrato,
+		cv = _cv,
+		direccion = _direccion
+	WHERE idcolaborador = _idcolaborador;
+END $$
+
+
+SELECT * FROM cursos WHERE idcurso = 3;
+CALL spu_cursos_actualizar(3,'Excel contadores','ETI','B','2023-06-20', 350);
+
+
+
+--  =================================
+CALL spu_colaboradores_listar()

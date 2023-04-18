@@ -46,7 +46,7 @@ if (isset($_POST['operacion'])){
       $datosEstudiante = '';
       $botonNulo = "
         <a href='#' class='btn btn-sm btn-warning' title='No tiene fotografia' style='float: right;'>
-          <i class='bi bi-eye-slash'></i>
+          <i class='bi bi-x-circle'></i>
         </a>" ;
 
       foreach($datosObtenidos as $registro){
