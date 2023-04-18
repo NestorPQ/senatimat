@@ -207,3 +207,5 @@ CALL spu_cursos_actualizar(3,'Excel contadores','ETI','B','2023-06-20', 350);
 
 --  =================================
 CALL spu_colaboradores_listar()
+
+UPDATE colaboradores SET estado = '1';
