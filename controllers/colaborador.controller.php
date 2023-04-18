@@ -77,4 +77,8 @@ if(isset($_POST['operacion'])){
       }
     }
   }
+
+  if($_POST['operacion'] == 'eliminar'){
+    $colaborador->eliminarColaborador($_POST['idcolaborador']);
+  }
 }

@@ -117,7 +117,7 @@ BEGIN
 		WHERE COL.estado = '1';
 END $$
 
-
+CALL spu_colaboradores_listar();
 
 
 -- REGISTRAR COLABORADORES

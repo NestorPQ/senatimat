@@ -255,6 +255,28 @@
         obtenerSedes();
       });
 
+      //  Eliminar Colaborador
+      $("#tabla-colaboradores tbody").on("click", ".eliminar", function(){
+        const idcolaboradorEliminar = $(this).data("idcolaborador");
+        console.log("Eliminando");
+
+        if(confirm("¿Estas seguro de proceder?")){
+          $.ajax({
+            url: '../controllers/colaborador.controller.php',
+            type: 'POST',
+            data: {
+              operacion : 'eliminar',
+              idcolaborador : idcolaboradorEliminar
+            },
+            success: function(result){
+              if (result == ""){
+                mostrarColaboradores();
+              }
+            }
+          });
+        }
+      });
+
       //  Ejecución automatica
       mostrarColaboradores();
 
