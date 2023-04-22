@@ -90,7 +90,8 @@ SELECT * FROM estudiantes;
 -- ******* QUINTA TABLA ********* --
 CREATE TABLE cargos(
 	idcargo INT PRIMARY KEY AUTO_INCREMENT,
-	cargo VARCHAR(50) NULL
+	cargo VARCHAR(50) NOT NULL,
+	CONSTRAINT uk_cargo_car UNIQUE (cargo)
 )ENGINE = INNODB;
 
 INSERT INTO cargos (cargo) VALUES
