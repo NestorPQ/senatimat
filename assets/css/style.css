@@ -1,0 +1,13 @@
+/* body{
+    background: linear-gradient(
+        to left,
+        rgb(159, 184, 165),
+        rgb(235, 218, 187)
+    );
+} */
+
+body {
+
+    background-image: url('img/madera.jpg');
+    background-size: cover;
+}

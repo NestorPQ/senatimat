@@ -75,6 +75,8 @@ CREATE TABLE estudiantes
 	CONSTRAINT fk_idsede_est FOREIGN KEY (idsede) REFERENCES sedes (idsede)
 )ENGINE = INNODB;
 
+
+
 INSERT INTO estudiantes 
 	(apellidos, nombres, nrodocumento, fechanacimiento, idcarrera, idsede) VALUES
 	('Martinez', 'Carlos', '44445555', '2000-01-01', 1, 1),
@@ -84,13 +86,23 @@ INSERT INTO estudiantes
 
 SELECT * FROM estudiantes;
 
---  CREAMOS LA TABLA CARGOS
 
+-- ******* QUINTA TABLA ********* --
 CREATE TABLE cargos(
 	idcargo INT PRIMARY KEY AUTO_INCREMENT,
 	cargo VARCHAR(50) NULL
 )ENGINE = INNODB;
 
+INSERT INTO cargos (cargo) VALUES
+	('Instructor'),
+	('Jefe Centro'),
+	('Asist. Administrativo'),
+	('Asist. Académico'),
+	('Coordinador ETI'),
+	('Coordinador CIS');
+
+
+-- ******* SEXTA TABLA ********* --
 CREATE TABLE colaboradores(
 	idcolaborador INT PRIMARY KEY AUTO_INCREMENT,
 	apellidos		VARCHAR(30)		NOT NULL,
@@ -108,19 +120,34 @@ CREATE TABLE colaboradores(
 	CONSTRAINT fk_idsede_car FOREIGN KEY (idsede) REFERENCES sedes (idsede)
 )ENGINE = INNODB;
 
+
+-- ******* SÉPTIMA TABLA ********* --
+CREATE TABLE usuarios
+(
+	idusuario		INT AUTO_INCREMENT PRIMARY KEY,
+	nombreusuario	VARCHAR(30)		NOT NULL,
+	claveacceso		VARCHAR(90)		NOT NULL,
+	apellidos		VARCHAR(30)		NOT NULL,
+	nombres			VARCHAR(30)		NOT NULL,
+	nivelacceso 	CHAR(1)			NOT NULL DEFAULT 'A',
+	estado			CHAR(1)			NOT NULL DEFAULT '1',
+	fecharegistro	DATETIME			NOT NULL DEFAULT NOW(),
+	fechaupdate		DATETIME			NULL,
+	CONSTRAINT uk_nombreusuario_usa UNIQUE (nombreusuario)
+)ENGINE = INNODB;
+
+INSERT INTO usuarios (nombreusuario, claveacceso, apellidos, nombres)	VALUES
+	('JHON12', '123456', 'Francia Minaya','Jhon Edward'),
+	('NESTOR', '123456', 'Pomachahua Quispe','Nestor'),
+	('PEDRO33', '123456', 'Apolaya Yataco','Pedro'),
+	('JOEL15','123456','Palomino Rojas','José Joel');
+
+
 -- DROP TABLE colaboradores;
 
 SELECT * FROM colaboradores;
 SELECT * FROM sedes;
 SELECT * FROM cargos;
-
-INSERT INTO cargos (cargo) VALUES
-	('Instructor'),
-	('Jefe Centro'),
-	('Asist. Administrativo'),
-	('Asist. Académico'),
-	('Coordinador ETI'),
-	('Coordinador CIS');
 
 
 

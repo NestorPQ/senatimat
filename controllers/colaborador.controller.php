@@ -38,7 +38,7 @@ if(isset($_POST['operacion'])){
       $numeroFila = 1;
       $datosColaborador = '';
       $botonNulo = "
-        <a href='#' class='btn btn-info btn-sm' title='No tiene CV' style='float: right;'>
+        <a href='#' class='btn btn-info btn-sm' title='No tiene CV'>
           <i class='bi bi-x-circle'></i>
         </a>
       ";
@@ -63,9 +63,26 @@ if(isset($_POST['operacion'])){
             if($registro['cv'] == ''){
               echo $botonNulo;
             }else {
-              echo " <a href='../views/doc/pdf/{$registro['cv']}' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-info btn-sm' style='float: right;' target='_blank'>
+              echo "<a href='../views/doc/pdf/{$registro['cv']}' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-info btn-sm' target='_blank'>
                       <i class='bi bi-filetype-pdf'></i>
-                    </a>";
+                    </a>
+                    
+                    <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-secondary btn-sm' data-bs-toggle='modal' data-bs-target='#pdfModal'><i class='bi bi-eye'></i></a>  
+
+                    <div class='modal fade' id='pdfModal' tabindex='-1' aria-labelledby='pdfModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog modal-lg'>
+                      <div class='modal-content'>
+                        <div class='modal-header'>
+                          <h5 class='modal-title' id='pdfModalLabel'>Título del PDF</h5>
+                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Cerrar'></button>
+                        </div>
+                        <div class='modal-body'>
+                          <embed src='doc/pdf/{$registro['cv']}' type='application/pdf' width='770' height='800' />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    ";
             }
 
 

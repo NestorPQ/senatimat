@@ -14,9 +14,13 @@
   <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+  <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 
 <body>
+
+  <?php include("navbar.php"); ?>
 
   <div class="container mt-3">
     <div class="card">
@@ -27,35 +31,34 @@
             <strong>Lista de colaboradores</strong>
           </div>
 
-          
           <div class="col-md-6 text-end">
             <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-colaborador">
-              <i class="bi bi-patch-plus">
-                Agregar Colaborador
-              </i>
+              <i class="bi bi-patch-plus"></i> Agregar Colaborador
             </button>
           </div>
         </div>
       </div>
-    </div class="card-body">
-      <table class="table table-sm table-striped" id="tabla-colaboradores">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Cargo</th>
-            <th>Sede</th>
-            <th>Telefono</th>
-            <th>TipoContrato</th>
-            <th>Direccion</th>
-            <th>Operaciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
+      <div class="card-body">
+        <table class="table table-sm table-striped" id="tabla-colaboradores">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Cargo</th>
+              <th>Sede</th>
+              <th>Telefono</th>
+              <th>TipoContrato</th>
+              <th>Direccion</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <!-- Inicio del modal  -->
 
@@ -96,11 +99,14 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="telefono" class="form-label">Telefono:</label>
-                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos">
+                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos" maxlength="9">
               </div>
               <div class="mb-3 col-md-6">
                 <label for="tipocontrato" class="form-label">TipoContrato:</label>
-                <input type="text" class="form-control form-control-sm" id="tipocontrato" placeholder="tipocontrato">
+                <select name="tipocontrato" id="tipcotrato" class="form-select form-select-sm">
+                  <option value="">Seleccione</option>
+                  <option value="C">C</option>
+                  <option value="P">P</option>
                 </select>
               </div>
             </div>
@@ -110,10 +116,6 @@
                 <input type="text" class="form-control form-control-sm" id="direccion" placeholder="direccion">
               </div>
               <div class="mb-3 col-md-6">
-                <!-- <label for="carrera" class="form-label">Carreras:</label>
-                <select name="carrera" id="carrera" class="form-select form-select-sm">
-                  <option value="">Seleccione</option>
-                </select> -->
               </div>
             </div>
 
@@ -132,6 +134,26 @@
     </div>
   </div>
   <!-- Fin del modal -->
+
+  <!-- modal 2 -->
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pdfModalLabel">Título del PDF</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <embed src="doc/pdf/{$registro['cv']}" type="application/pdf" width="770" height="800" />
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- fin -->
   
   
 
@@ -148,9 +170,6 @@
 
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  <!-- Lightbox JS -->
-    <script src="../dist/lightbox2/src/js/lightbox.js"></script>
 
   <script>
 

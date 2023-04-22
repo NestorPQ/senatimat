@@ -45,7 +45,7 @@ if (isset($_POST['operacion'])){
       $numeroFila = 1;
       $datosEstudiante = '';
       $botonNulo = "
-        <a href='#' class='btn btn-sm btn-warning' title='No tiene fotografia' style='float: right;'>
+        <a href='#' class='btn btn-sm btn-warning' title='No tiene fotografia'>
           <i class='bi bi-x-circle'></i>
         </a>" ;
 
@@ -75,16 +75,14 @@ if (isset($_POST['operacion'])){
             if($registro['fotografia'] == ''){
               echo $botonNulo;
             }else {
-              echo "<a href='../views/img/fotografias/{$registro['fotografia']}' data-lightbox='{$registro['idestudiante']}' data-title='{$datosEstudiante}' class='btn btn-sm btn-warning' style='float: right;'>
-              <i class='bi bi-eye-fill'></i>
-              </a> ";
+              echo " <a href='../views/img/fotografias/{$registro['fotografia']}' data-lightbox='{$registro['idestudiante']}' data-title='{$datosEstudiante}' class='btn btn-sm btn-warning'>
+                      <i class='bi bi-eye-fill'></i>
+                    </a> ";
             }
 
             //  La tercera parte a RENDERIZAR, cierre de la fila
-            echo "
-                </td>
-              </tr>  
-            ";
+            echo "</td>
+                </tr>";
 
           echo("lista de usuarios");
           $numeroFila++;

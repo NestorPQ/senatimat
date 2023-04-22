@@ -203,9 +203,87 @@ END $$
 SELECT * FROM cursos WHERE idcurso = 3;
 CALL spu_cursos_actualizar(3,'Excel contadores','ETI','B','2023-06-20', 350);
 
+--  ================================================================
+--  PROCEDIMIENTOS ALMACENADO DE LA TABLA USUARIOS
 
+-- USUARIO LOGIN
+DELIMITER $$
+CREATE PROCEDURE spu_usuarios_login
+(
+	IN _nombreusuario VARCHAR(30)
+)
+BEGIN
+	SELECT	idusuario, nombreusuario, claveacceso,
+				apellidos,nombres,nivelacceso
+		FROM usuarios
+		WHERE nombreusuario = _nombreusuario AND estado = '1';
+END $$
 
---  =================================
+-- REGISTRAR USUARIO
+DELIMITER $$
+CREATE PROCEDURE spu_usuarios_registrar
+(
+	IN _nombreusuario	VARCHAR(30),
+	IN _nombres	VARCHAR(30),
+	IN _apellidos	VARCHAR(30),
+	IN _claveacceso	VARCHAR(90)		
+)
+BEGIN
+	INSERT INTO usuarios (nombreusuario, nombres, apellidos, claveacceso) VALUES
+		(_nombreusuario,_nombres, _apellidos, _claveacceso);
+END $$
+
+--  MOSTRAR USUARIO
+-- (puede ser modificado, despues de borrarlo)
+DELIMITER $$
+CREATE PROCEDURE spu_usuarios_listar()
+BEGIN
+	SELECT	
+		idusuario,
+		nombreusuario,
+		nombres,
+		apellidos,
+		claveacceso
+		FROM usuarios
+		WHERE estado = '1'
+		ORDER BY idusuario DESC;
+END $$
+
+--  BORRAR USUARIOS
+DELIMITER $$
+CREATE PROCEDURE spu_usuarios_eliminar(IN _idusuario INT)
+BEGIN
+	UPDATE usuarios SET estado = '0' WHERE idusuario = _idusuario;
+END $$
+
+--  RECUPERAR ID
+DELIMITER $$
+CREATE PROCEDURE spu_usuarios_recuperar_id(IN _idusuario INT)
+BEGIN 
+	SELECT * FROM usuarios WHERE idusuario = _idusuario;
+END $$
+
+--  ACTUALIZAR USUARIOS
+
+DELIMITER $$
+CREATE PROCEDURE spu_usuarios_actualizar(
+	IN _idusuario	INT,  --  necesita el id por actualizar
+	IN _nombreusuario	VARCHAR(30),
+	IN _nombres	VARCHAR(30),
+	IN _apellidos	VARCHAR(30),
+	IN _claveacceso	VARCHAR(90)	
+)
+BEGIN
+	UPDATE usuarios SET
+		nombreusuario = _nombreusuario,
+		nombres = _nombres,
+		apellidos = _apellidos,
+		claveacceso = _claveacceso
+		
+	WHERE idusuario = _idusuario;
+END $$
+
+--  ===================================
 CALL spu_colaboradores_listar()
 
 UPDATE colaboradores SET estado = '1';

@@ -16,61 +16,57 @@
     <!-- Lightbox CSS -->
     <link rel="stylesheet" href="../dist/lightbox2/src/css/lightbox.css">
 
+    <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 
 <body>
   
-  <!-- Modal trigger button
-  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
-    Launch
-  </button> -->
+  <?php include("navbar.php"); ?>
   
   <!-- Inicio del card -->
   <div class="container mt-3">
     <div class="card">
       <div class="card-header bg-secondary text-light">
         <div class="row">
-
-        <div class="col-md-6">
-          <strong>Lista de estudiantes</strong>
-        </div>
-        <div class="col-md-6 text-end">
-          <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
-            <i class="bi bi-person-plus">
+          <div class="col-md-6">
+            <strong>Lista de estudiantes</strong>
+          </div>
+          <div class="col-md-6 text-end">
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-estudiante">
+              <i class="bi bi-person-plus">
               Agregar Estudiante
             </i>
           </button>
         </div>        
-      </div>
-
-
+      </div> 
     </div>
+
+    <div class="container">
+      <table id="tabla-estudiantes" class="table table-striped table-sm">
+    
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Tipo</th>
+            <th>Documento</th>
+            <th>Nacimiento</th>
+            <th>Carrera</th>
+            <th>Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+        </tbody>
+      </table>
+    </div>
+    
   </div>
 </div>
   <!-- Fin del card -->
   
-  <div class="container">
-    <table id="tabla-estudiantes" class="table table-striped table-sm">
-
-
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Apellidos</th>
-          <th>Nombres</th>
-          <th>Tipo</th>
-          <th>Documento</th>
-          <th>Nacimiento</th>
-          <th>Carrera</th>
-          <th>Operaciones</th>
-        </tr>
-      </thead>
-      <tbody>
-
-
-      </tbody>
-    </table>
-  </div>
   
   <!-- Modal Body -->
   <div class="modal fade" id="modal-estudiante" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
@@ -86,11 +82,11 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="apellidos" class="form-label">Apellidos:</label>
-                <input type="text" class="form-control form-control-sm" id="apellidos">
+                <input type="text" class="form-control form-control-sm" id="apellidos" placeholder="apellido">
               </div>
               <div class="mb-3 col-md-6">
                 <label for="nombres" class="form-label">Nombres:</label>
-                <input type="text" class="form-control form-control-sm" id="nombres">
+                <input type="text" class="form-control form-control-sm" id="nombres" placeholder="nombre">
               </div>
             </div>
             <div class="row">
@@ -104,7 +100,7 @@
               </div>
               <div class="mb-3 col-md-6">
                 <label for="nrodocumento" class="form-label">Nro documento:</label>
-                <input type="text" class="form-control form-control-sm" id="nrodocumento">
+                <input type="text" class="form-control form-control-sm" id="nrodocumento" placeholder="Numero del documento" maxlength="8">
               </div>
             </div>
             <div class="row">
