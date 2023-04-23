@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['login']) && $_SESSION['login']){
+  header('Location:views/menu.php');
+}
+
+?>
 
 <!doctype html>
 <html lang="es">
@@ -40,18 +49,18 @@
             <form>
               <div class="form-group">
                 <label for="usuario">Usuario:</label>
-                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario">
+                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required>
               </div>
               <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña">
+                <label for="clave">Contraseña:</label>
+                <input type="password" class="form-control" id="clave" placeholder="Ingresa tu contraseña" required>
               </div>
               <div class="form-group form-check">
                 <label class="form-check-label">
                   <input class="form-check-input" type="checkbox"> Recordar contraseña
                 </label>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+              <button type="submit" id="iniciar-sesion" class="btn btn-primary btn-block">Iniciar sesión</button>
 
               <div class="text-center mt-3">
                 ¿No tienes una cuenta? 
@@ -84,6 +93,34 @@
   <script>
     $(document).ready(function(){
 
+      function iniciarSesion(){
+        const usuario = $("#usuario").val();
+        const clave = $("#clave").val();
+
+        if(usuario != "" && clave !=""){
+          $.ajax({
+            url: 'controllers/usuario.controller.php',
+            type: 'POST',
+            data: {
+              operacion   : 'login',
+              nombreusuario : usuario,
+              claveIngresada  : clave
+            },
+            dataType: 'JSON',
+            success: function(result){
+              console.log(result);
+              if(result["status"]){
+                window.location.href = "views/menu.php"
+              }else {
+                alert(result["mensaje"]);
+              }
+            }
+
+          });
+        }
+      }
+
+    $("#iniciar-sesion").click(iniciarSesion);
     
     });
   </script>

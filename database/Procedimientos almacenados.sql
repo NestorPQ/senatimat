@@ -199,8 +199,6 @@ BEGIN
 	WHERE idcolaborador = _idcolaborador;
 END $$
 
-
-SELECT * FROM cursos WHERE idcurso = 3;
 CALL spu_cursos_actualizar(3,'Excel contadores','ETI','B','2023-06-20', 350);
 
 --  ================================================================
@@ -218,6 +216,9 @@ BEGIN
 		FROM usuarios
 		WHERE nombreusuario = _nombreusuario AND estado = '1';
 END $$
+
+CALL spu_usuarios_login("NESTOR");
+SELECT * FROM usuarios;
 
 -- REGISTRAR USUARIO
 DELIMITER $$

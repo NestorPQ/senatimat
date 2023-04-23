@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['login']) || $_SESSION['login'] == false){
+  header('Location:../index.php');
+}
+?>
+
 <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand">
@@ -25,8 +33,11 @@
       
       <!-- Cerrar session -->
       <form class="d-flex">
-        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-danger" id="cerrar-sesion">log out  <i class="bi bi-box-arrow-right"></i></button>
+        <a href="../controllers/usuario.controller.php?operacion=finalizar" class="btn btn-outline-danger" id="cerrar-sesion">
+          log out  <i class="bi bi-box-arrow-right"></i>
+        </a>
+
+        
       </form>
     </div>
   </div>
