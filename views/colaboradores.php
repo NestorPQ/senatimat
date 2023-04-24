@@ -134,27 +134,6 @@
     </div>
   </div>
   <!-- Fin del modal -->
-
-  <!-- modal 2 -->
-
-  <!-- Modal -->
-  <!-- <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="pdfModalLabel">Título del PDF</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <embed src="doc/pdf/{$registro['cv']}" type="application/pdf" width="770" height="800" />
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
-  <!-- fin -->
-  
   
 
   <!-- Bootstrap JavaScript Libraries -->

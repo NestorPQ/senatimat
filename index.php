@@ -21,22 +21,25 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-qH+7Ou6G8XyAK1nK5OlDztVUxHx8hZVUeZ6DbnGMEuLZd8nJW4p4zPwp7PhRfRc8ya2M27YjmTEUK3qL1nEzlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
   <style>
     img {
     display: block;
     margin: 0 auto;
-}
+    }
+
+    label { 
+		  font-family:Arial, Helvetica, sans-serif ;
+      font-weight: bold;
+      font-size: 14px;
+		}
+    
   </style>
 
 </head>
 
 <body>
 
-  <img src="users.png" alt="user">
+  <img src="assets/css/img/users.png" alt="user">
 
   <div class="container mt-5">
     <div class="row justify-content-center">
@@ -46,10 +49,10 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
             <h4 class="text-center">Inicio de sesión</h4>
           </div>
           <div class="card-body">
-            <form>
+            <form autocomplete="off">
               <div class="form-group">
                 <label for="usuario">Usuario:</label>
-                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required>
+                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required >
               </div>
               <div class="form-group">
                 <label for="clave">Contraseña:</label>
@@ -60,7 +63,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                   <input class="form-check-input" type="checkbox"> Recordar contraseña
                 </label>
               </div>
-              <button type="submit" id="iniciar-sesion" class="btn btn-primary btn-block">Iniciar sesión</button>
+              <button type="submit" id="iniciar-sesion" class="btn btn-success">Iniciar sesión</button>
 
               <div class="text-center mt-3">
                 ¿No tienes una cuenta? 
@@ -76,8 +79,8 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
     </div>
   </div>
 
-
-
+  <?php include("views/modal-registrarse.php"); ?>
+  
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -89,6 +92,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
   </script>
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     $(document).ready(function(){
@@ -110,9 +114,17 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
             success: function(result){
               console.log(result);
               if(result["status"]){
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+                });
                 window.location.href = "views/menu.php"
               }else {
                 alert(result["mensaje"]);
+                
               }
             }
 
