@@ -99,7 +99,7 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="telefono" class="form-label">Telefono:</label>
-                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos" maxlength="9">
+                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos" maxlength="9" inputmode="numeric>
               </div>
               <div class="mb-3 col-md-6">
                 <label for="tipocontrato" class="form-label">TipoContrato:</label>

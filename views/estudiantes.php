@@ -82,11 +82,11 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="apellidos" class="form-label">Apellidos:</label>
-                <input type="text" class="form-control form-control-sm" id="apellidos" placeholder="apellido">
+                <input type="text" class="form-control form-control-sm" id="apellidos" placeholder="apellido" autofocus require>
               </div>
               <div class="mb-3 col-md-6">
                 <label for="nombres" class="form-label">Nombres:</label>
-                <input type="text" class="form-control form-control-sm" id="nombres" placeholder="nombre">
+                <input type="text" class="form-control form-control-sm" id="nombres" placeholder="nombre" require>
               </div>
             </div>
             <div class="row">
@@ -100,7 +100,7 @@
               </div>
               <div class="mb-3 col-md-6">
                 <label for="nrodocumento" class="form-label">Nro documento:</label>
-                <input type="text" class="form-control form-control-sm" id="nrodocumento" placeholder="Numero del documento" maxlength="8">
+                <input type="text" class="form-control form-control-sm" id="nrodocumento" placeholder="Numero del documento" maxlength="8" inputmode="numeric" require>
               </div>
             </div>
             <div class="row">

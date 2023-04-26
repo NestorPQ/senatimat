@@ -15,7 +15,7 @@
       <form id="formulario-usuarios" autocomplete="off">
         <div class="mb-3">
           <label for="nombreusuario" class="form-label">Usuario:</label>
-          <input type="text" class="form-control form-control-sm" id="nombreusuario" placeholder="Escriba un usuario" required>
+          <input type="text" class="form-control form-control-sm" id="nombreusuario" placeholder="Escriba un usuario" required autofocus>
         </div>
         <div class="mb-3">
           <label for="nombres" class="form-label">Nombre:</label>
