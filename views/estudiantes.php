@@ -42,7 +42,7 @@
       </div> 
     </div>
 
-    <div class="container">
+    <div class="container table-responsive">
       <table id="tabla-estudiantes" class="table table-striped table-sm">
     
         <thead>

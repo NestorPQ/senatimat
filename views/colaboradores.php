@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="card-body">
+      <div class="card-body table-responsive">
         <table class="table table-sm table-striped" id="tabla-colaboradores">
           <thead>
             <tr>
@@ -105,8 +105,8 @@
                 <label for="tipocontrato" class="form-label">TipoContrato:</label>
                 <select name="tipocontrato" id="tipcotrato" class="form-select form-select-sm">
                   <option value="">Seleccione</option>
-                  <option value="C">C</option>
-                  <option value="P">P</option>
+                  <option value="C">Completo</option>
+                  <option value="P">Parcial</option>
                 </select>
               </div>
             </div>
@@ -151,6 +151,8 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
+  
+
 
     $(document).ready(function(){
 

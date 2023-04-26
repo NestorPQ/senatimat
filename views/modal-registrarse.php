@@ -1,3 +1,4 @@
+
 <!-- Modal Body -->
 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
 <div class="modal fade" id="modal-registro-usuarios" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
@@ -39,40 +40,6 @@
     </div>
   </div>
 </div>
-
-<!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-    //  Ejecutamos el código JavaScript después de que se haya cargado completamente el DOM
-  $(document).ready(function(){
-    
-    function registrarUsuarios(){
-      console.log("Registrando....");
-      
-      if(confirm("¿Estas segura de registrar en este usuario?")){
-        $.ajax({
-          url: 'controllers/usuario.controller.php',
-          type: 'POST',
-          data: {
-            operacion  : 'registrar',
-            nombreusuario    :  $("#nombreusuario").val(),
-            nombres    :  $("#nombres").val(),
-            apellidos    :  $("#apellidos").val(),
-            claveacceso    :  $("#claveacceso").val(),
-          },
-          success: function(result){
-            if(result == ""){           
-              $("#modal-registro-usuarios").modal('hide');
-            }
-          }
-        });
-      }
-    }
-    
-    //  EVENTOS
-    $("#guardar-usuario").click(registrarUsuarios);
-
-  });
 
 </script>
 

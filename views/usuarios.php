@@ -1,4 +1,3 @@
-<!--  -->
 
 <!doctype html>
 <html lang="es">
@@ -41,14 +40,13 @@
           </div>
         </div>
       </div>
-      <div class="card-body">
+      <div class="card-body table-responsive">
         <table class="table table-sm table-striped" id="tabla-usuarios">
           <colgroup>
             <col width = "5%">
-            <col width = "20%">
-            <col width = "20%">
             <col width = "25%">
-            <col width = "20%">
+            <col width = "25%">
+            <col width = "35%">
             <col width = "10%">
           </colgroup>
 
@@ -58,7 +56,6 @@
               <th>Usuario</th>
               <th>Nombre</th>
               <th>Apellido</th>
-              <th>Clave</th>
               <th>Operaciones</th>
             </tr>
           </thead>
@@ -121,17 +118,25 @@
       function registrarUsuario(){
         console.log("Registrando....");
         
-        if(confirm("¿Estas segura de registrar en este usuario?")){
+        if(confirm("¿Estas segura guardar los datos?")){
+
+          let datos = {
+              operacion         : 'registrar',
+              idusuario         :  idusuarioactualizar,
+              nombreusuario     :  $("#nombreusuario").val(),
+              nombres           :  $("#nombres").val(),
+              apellidos         :  $("#apellidos").val(),
+              claveacceso       :  $("#claveacceso").val()
+          };
+
+          if(!datosNuevos){
+            datos["operacion"] = "actualizar";
+          }
+
           $.ajax({
             url: '../controllers/usuario.controller.php',
             type: 'POST',
-            data: {
-              operacion  : 'registrar',
-              nombreusuario    :  $("#nombreusuario").val(),
-              nombres    :  $("#nombres").val(),
-              apellidos    :  $("#apellidos").val(),
-              claveacceso    :  $("#claveacceso").val(),
-            },
+            data: datos,
             success: function(result){
               if(result == ""){
                 $("#formulario-usuarios")[0].reset();
@@ -193,6 +198,7 @@
             datosNuevos = false;
 
             idusuarioactualizar = result["idusuario"];
+            idusuario     :   idusuarioactualizar;
             $("#nombreusuario").val(result["nombreusuario"]);
             $("#nombres").val(result["nombres"]);
             $("#apellidos").val(result["apellidos"]);

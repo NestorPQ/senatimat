@@ -139,7 +139,7 @@ BEGIN
 		SET _cv = NULL;
 	END IF;
 
-	INSERT INTO colaboradores `senatimat`
+	INSERT INTO colaboradores 
 	(apellidos, nombres, idcargo, idsede, telefono, tipocontrato, cv, direccion) VALUES
 	(_apellidos, _nombres, _idcargo, _idsede, _telefono, _tipocontrato, _cv, _direccion);
 END $$
@@ -185,7 +185,6 @@ CREATE PROCEDURE spu_colaborador_actualizar(
 	IN _cv 					VARCHAR(100),
 	IN _direccion 			VARCHAR(40)
 )
-)
 BEGIN
 	UPDATE colaboradores SET
 		apellidos = _apellidos,
@@ -199,7 +198,7 @@ BEGIN
 	WHERE idcolaborador = _idcolaborador;
 END $$
 
-CALL spu_cursos_actualizar(3,'Excel contadores','ETI','B','2023-06-20', 350);
+
 
 --  ================================================================
 --  PROCEDIMIENTOS ALMACENADO DE LA TABLA USUARIOS

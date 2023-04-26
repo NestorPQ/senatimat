@@ -1,9 +1,13 @@
+
 <?php
 
 require_once '../models/Colaboradores.php';
 
+
+
 if(isset($_POST['operacion'])){
   $colaborador = new Colaborador();
+  
 
   if($_POST['operacion'] == 'registrar'){
     $datosGuardar = [
@@ -96,6 +100,38 @@ if(isset($_POST['operacion'])){
   }
 
   if($_POST['operacion'] == 'eliminar'){
+
     $colaborador->eliminarColaborador($_POST['idcolaborador']);
+
+    $arrayCola = $colaborador->listarColaboradores();
+
+    
+    // Buscar cv
+    $id_buscado = $_POST['idcolaborador'];
+    $indice = array_search($id_buscado, array_column($arrayCola, 'idcolaborador'));
+
+    if ($indice !== false) {
+        $ruta = $arrayCola[$indice]['cv'];
+
+        // Eliminar el pdf
+        $archivo = "../views/js/eliminarArchivo.js"; // Ruta del archivo script eliminarArchivo.js
+        $nombreArchivo = "../views/doc/pdf/.$ruta"; // Ruta del archivo para eliminar
+        
+        echo $nombreArchivo;
+        print_r($nombreArchivo);
+        var_dump($nombreArchivo);
+  
+        exec("node $archivo $nombreArchivo", $output, $return_var);
+    
+        if ($return_var !== 0) {
+          echo "Se ha producido un error al eliminar el archivo.";
+        } else {
+          echo "El archivo ha sido eliminado exitosamente.";
+        }
+
+    }
+    
+    
+
   }
 }

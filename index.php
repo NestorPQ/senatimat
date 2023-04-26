@@ -52,7 +52,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
             <form autocomplete="off">
               <div class="form-group">
                 <label for="usuario">Usuario:</label>
-                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required >
+                <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario" required autofocus>
               </div>
               <div class="form-group">
                 <label for="clave">Contraseña:</label>
@@ -120,7 +120,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
                 title: 'Your work has been saved',
                 showConfirmButton: false,
                 timer: 1500
-                });
+                })
                 window.location.href = "views/menu.php"
               }else {
                 alert(result["mensaje"]);
@@ -132,6 +132,32 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
         }
       }
 
+      function registrarUsuarios(){
+      console.log("Registrando....");
+      
+        if(confirm("¿Estas segura de registrar en este usuario?")){
+          $.ajax({
+            url: 'controllers/usuario.controller.php',
+            type: 'POST',
+            data: {
+              operacion  : 'registrar',
+              nombreusuario    :  $("#nombreusuario").val(),
+              nombres    :  $("#nombres").val(),
+              apellidos    :  $("#apellidos").val(),
+              claveacceso    :  $("#claveacceso").val(),
+            },
+            success: function(result){
+              if(result == ""){           
+                $("#modal-registro-usuarios").modal('hide');
+              }
+            }
+          });
+        }
+      }
+
+
+    //  EVENTOS
+    $("#guardar-usuario").click(registrarUsuarios);
     $("#iniciar-sesion").click(iniciarSesion);
     
     });
