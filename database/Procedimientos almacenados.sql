@@ -287,3 +287,44 @@ END $$
 CALL spu_colaboradores_listar()
 
 UPDATE colaboradores SET estado = '1';
+
+-- Ejemplo de inserción de datos adicionales en la tabla "colaboradores"
+
+CALL spu_colaboradores_registrar('Ramírez Torres', 'Martín', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Pedro Vilcapaza #305, Wanchaq');
+CALL spu_colaboradores_registrar('González López', 'Carolina', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle San Martín #102, San Sebastián');
+CALL spu_colaboradores_registrar('Pérez Sánchez', 'Ana María', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Los Incas #503, Santiago');
+CALL spu_colaboradores_registrar('Torres Castro', 'Luis', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Mariscal Gamarra #208, San Jerónimo');
+CALL spu_colaboradores_registrar('Sánchez Rodríguez', 'María', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Pachacútec #701, Wanchaq');
+CALL spu_colaboradores_registrar('López García', 'José', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Los Álamos #401, San Jerónimo');
+CALL spu_colaboradores_registrar('Gómez Vargas', 'Laura', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Real #305, Santiago');
+CALL spu_colaboradores_registrar('Castillo Ramírez', 'Andrés', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Los Jazmines #201, Wanchaq');
+CALL spu_colaboradores_registrar('González Castro', 'Sandra', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Bolívar #503, San Sebastián');
+CALL spu_colaboradores_registrar('Romero Salazar', 'Pedro', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Av. Los Pinos #102, Santiago');
+CALL spu_colaboradores_registrar('Fernández Medina', 'Ana', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Lima #208, San Jerónimo');
+CALL spu_colaboradores_registrar('Ortega López', 'Jorge', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. La Paz #701, Wanchaq');
+CALL spu_colaboradores_registrar('Soto Cruz', 'María', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Arequipa #305, Santiago');
+CALL spu_colaboradores_registrar('Pérez Mendoza', 'Carlos', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Wari N° 245, Urb. 16 de Abril, Huamanga');
+CALL spu_colaboradores_registrar('García Ramos', 'Isabel', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Av. Grau N° 502, Urb. San Agustín, Cusco');
+CALL spu_colaboradores_registrar('Luna Torres', 'Luis', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Bolívar N° 203, Urb. La Merced, Trujillo');
+CALL spu_colaboradores_registrar('Cruz Rojas', 'Mariana', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Los Libertadores N° 150, Urb. Santa María, Lima');
+CALL spu_colaboradores_registrar('Vargas Gómez', 'Pedro', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Grau N° 305, Urb. San Juan, Arequipa');
+CALL spu_colaboradores_registrar('Sánchez Torres', 'Laura', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Tacna N° 408, Urb. El Carmen, Chiclayo');
+CALL spu_colaboradores_registrar('Romero Medina', 'Ana', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Universitaria N° 701, Urb. Los Olivos, Lima');
+CALL spu_colaboradores_registrar('González López', 'Javier', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle San Martín N° 405' );
+CALL spu_colaboradores_registrar('Torres López', 'María', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Junín N° 302, Urb. Santa Rosa, Iquitos');
+CALL spu_colaboradores_registrar('Rojas Pérez', 'Juan', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Av. Los Pinos N° 204, Urb. Las Casuarinas, Huancayo');
+CALL spu_colaboradores_registrar('Gómez Sánchez', 'Carolina', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Progreso N° 405, Urb. San Pedro, Trujillo');
+CALL spu_colaboradores_registrar('Medina Romero', 'Luis', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. La Mar N° 601, Urb. Santa Isabel, Chiclayo');
+CALL spu_colaboradores_registrar('López González', 'Ana', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Los Ángeles N° 208, Urb. Los Jazmines, Arequipa');
+CALL spu_colaboradores_registrar('Pérez Rojas', 'Pedro', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Los Alamos N° 305, Urb. San Agustín, Cusco');
+CALL spu_colaboradores_registrar('Ramos García', 'Laura', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Grau N° 503, Urb. El Bosque, Lima');
+CALL spu_colaboradores_registrar('González López', 'Javier', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle San Martín N° 405, Urb. Las Palmeras, Piura');
+
+CALL spu_colaboradores_registrar('Sánchez Gutiérrez', 'Luisa', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Av. Los Cedros N° 305, Urb. Las Orquídeas, Tarapoto');
+CALL spu_colaboradores_registrar('Cruz Vargas', 'Carla', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Las Palmas N° 402, Urb. San Juan, Chimbote');
+CALL spu_colaboradores_registrar('Luna Paredes', 'Diego', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Los Pinos N° 208, Urb. Los Álamos, Huaraz');
+CALL spu_colaboradores_registrar('Vega Rodríguez', 'Marcela', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Av. Los Olivos N° 601, Urb. Las Palmeras, Ayacucho');
+CALL spu_colaboradores_registrar('Fernández Chávez', 'Gonzalo', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Los Cerezos N° 305, Urb. Los Pinos, Tacna');
+CALL spu_colaboradores_registrar('Mendoza Medina', 'Andrea', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. La Paz N° 503, Urb. Santa Rosa, Ica');
+CALL spu_colaboradores_registrar('Huamán Flores', 'Oscar', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Los Girasoles N° 405, Urb. Los Ángeles, Juliaca');
+

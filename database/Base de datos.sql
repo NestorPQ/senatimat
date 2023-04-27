@@ -113,7 +113,7 @@ CREATE TABLE colaboradores(
 	telefono			CHAR(9)			NOT NULL,
 	tipocontrato	CHAR(1)			NOT NULL,
 	cv					VARCHAR(100)	NULL,
-	direccion		VARCHAR(40)		NOT NULL,
+	direccion		VARCHAR(70)		NOT NULL,
 	fecharegistro	DATETIME			NOT NULL DEFAULT NOW(),
 	fechaupdate		DATETIME			NULL,
 	estado 			CHAR(1)			NOT NULL DEFAULT '1',

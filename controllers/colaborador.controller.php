@@ -42,7 +42,7 @@ if(isset($_POST['operacion'])){
       $numeroFila = 1;
       $datosColaborador = '';
       $botonNulo = "
-        <a href='#' class='btn btn-info btn-sm' title='No tiene CV'>
+        <a href='#' class='btn btn-outline-info btn-sm' title='No tiene CV'>
           <i class='bi bi-x-circle'></i>
         </a>
       ";
@@ -58,20 +58,20 @@ if(isset($_POST['operacion'])){
             <td>{$registro['cargo']}</td>
             <td>{$registro['sede']}</td>
             <td>{$registro['telefono']}</td>
-            <td>{$registro['tipocontrato']}</td>
+            <td class='text-center'>{$registro['tipocontrato']}</td>
             <td>{$registro['direccion']}</td>
             <td>
-              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
-              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-warning btn-sm editar'><i class='bi bi-pencil'></i></a>                     
+              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-outline-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
+              <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-outline-warning btn-sm editar'><i class='bi bi-pencil'></i></a>                     
               ";
             if($registro['cv'] == ''){
               echo $botonNulo;
             }else {
-              echo "<a href='../views/doc/pdf/{$registro['cv']}' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-info btn-sm' target='_blank'>
+              echo "<a href='../views/doc/pdf/{$registro['cv']}' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-outline-info btn-sm' target='_blank'>
                       <i class='bi bi-filetype-pdf'></i>
                     </a>
                     
-                    <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-secondary btn-sm' data-bs-toggle='modal' data-bs-target='#pdfModal'><i class='bi bi-eye'></i></a>  
+                    <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-outline-secondary btn-sm' data-bs-toggle='modal' data-bs-target='#pdfModal'><i class='bi bi-eye'></i></a>  
 
                     <div class='modal fade' id='pdfModal' tabindex='-1' aria-labelledby='pdfModalLabel' aria-hidden='true'>
                     <div class='modal-dialog modal-lg'>

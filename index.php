@@ -39,7 +39,9 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 
 <body>
 
-  <img src="assets/css/img/users.png" alt="user">
+  <div style="padding-top: 80px;">
+    <img src="assets/css/img/users.png" alt="user">
+  </div>
 
   <div class="container mt-5">
     <div class="row justify-content-center">

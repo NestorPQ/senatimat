@@ -6,7 +6,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] == false){
 }
 ?>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-light navbar-dark bg-dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
+<style>
+  #navbar {
+    font-family: 'Secular One', sans-serif;
+  }
+</style>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light navbar-dark bg-dark fixed-top" id="navbar" >
   <div class="container">
     <a class="navbar-brand">
       Senatimat

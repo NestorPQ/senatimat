@@ -14,16 +14,25 @@
   <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 
+  <style>
+    #tabla {
+      font-family: 'Roboto Slab', serif;
+    }
+  </style>
 </head>
 
-<body>
+<body >
 
   <?php include("navbar.php"); ?>
 
-  <div class="container mt-3">
-    <div class="card">
+  <div class="container mt-3" id="tabla" style="padding-top: 80px;">
+    <div class="card border border-secondary border-1.5 rounded-2 bg-light shadow">
       <div class="card-header bg-secondary text-light">
         <div class="row">
 
@@ -38,22 +47,22 @@
           </div>
         </div>
       </div>
-      <div class="card-body table-responsive">
-        <table class="table table-sm table-striped" id="tabla-colaboradores">
-          <thead>
+      <div class="card-body table-responsive ">
+        <table class="text-nowrap table table-sm table-striped table-bordered" id="tabla-colaboradores">
+          <thead class="text-center">
             <tr>
               <th>#</th>
               <th>Nombres</th>
               <th>Apellidos</th>
               <th>Cargo</th>
               <th>Sede</th>
-              <th>Telefono</th>
+              <th>Teléfono</th>
               <th>TipoContrato</th>
-              <th>Direccion</th>
+              <th>Dirección</th>
               <th>Operaciones</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-group-divider ">
             
           </tbody>
         </table>
@@ -61,6 +70,7 @@
     </div>
   </div>
   <!-- Inicio del modal  -->
+
 
   <div class="modal fade" id="modal-registro-colaborador" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
@@ -99,7 +109,7 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="telefono" class="form-label">Telefono:</label>
-                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos" maxlength="9" inputmode="numeric>
+                <input type="text" class="form-control form-control-sm" id="telefono" placeholder="numero de 9 digitos" maxlength="9" inputmode="numeric">
               </div>
               <div class="mb-3 col-md-6">
                 <label for="tipocontrato" class="form-label">TipoContrato:</label>
@@ -209,6 +219,7 @@
             $("#formulario-colaborador")[0].reset();
             $("#modal-registro-colaborador").modal("hide");
             alert("Guardado correctamente");
+            mostrarColaboradores();
           }
         });
       }
@@ -227,12 +238,12 @@
           //Identificando acción del usuario
           if (result.isConfirmed){
             registrarColaborador();
+            
           }
         });
       }
       
       function mostrarColaboradores(){
-        console.log("hola");
         $.ajax({
           url:'../controllers/colaborador.controller.php',
           type: 'POST',
@@ -258,7 +269,6 @@
       //  Eliminar Colaborador
       $("#tabla-colaboradores tbody").on("click", ".eliminar", function(){
         const idcolaboradorEliminar = $(this).data("idcolaborador");
-        console.log("Eliminando");
 
         if(confirm("¿Estas seguro de proceder?")){
           $.ajax({
@@ -281,11 +291,11 @@
       mostrarColaboradores();
 
     });
-
-
     
 
   </script>
+
+  
 </body>
 
 </html>

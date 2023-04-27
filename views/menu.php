@@ -31,53 +31,10 @@
 
   <?php include("navbar.php"); ?>
 
-  <div class="container py-5">
-    <h1 class="display-1 text-center text-primary fw-bold">¡Bienvenido!</h1>
+  <div class="container py-5" >
+    <h1 class="display-1 text-center  fw-bold" style="background-color: var(--bs-danger-bg-subtle)">¡Bienvenido!</h1>
   </div>
 
-  <div class="card-body table-responsive">
-
-    <table id="miTabla" class="display responsive" style="width:100%">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nombres</th>
-          <th>Apellidos</th>
-          <th>Usuario</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>John</td>
-          <td>Doe</td>
-          <td>@johndoe</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jane</td>
-          <td>Doe</td>
-          <td>@janedoe</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Bob</td>
-          <td>Smith</td>
-          <td>@bobsmith</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <!-- <script>
-    $(document).ready(function() {
-      $('#miTabla').DataTable({
-        responsive: true
-      });
-    });
-  </script> -->
 
   <!-- <div class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
