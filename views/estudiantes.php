@@ -11,12 +11,20 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="../dist/lightbox2/src/css/lightbox.css">
+  <!-- Lightbox CSS -->
+  <link rel="stylesheet" href="../dist/lightbox2/src/css/lightbox.css">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+  <style>
+    #tabla {
+      font-family: 'Roboto Slab', serif;
+    }
+  </style>
 
 </head>
 
@@ -25,8 +33,8 @@
   <?php include("navbar.php"); ?>
   
   <!-- Inicio del card -->
-  <div class="container mt-3">
-    <div class="card">
+  <div class="container mt-3 mb-5" id="tabla" style="padding-top: 80px;">
+    <div class="card border border-secondary border-1.5 rounded-2 bg-light shadow-lg">
       <div class="card-header bg-secondary text-light">
         <div class="row">
           <div class="col-md-6">
@@ -43,9 +51,9 @@
     </div>
 
     <div class="container table-responsive">
-      <table id="tabla-estudiantes" class="table table-striped table-sm">
+      <table id="tabla-estudiantes" class="table table-striped table-sm text-nowrap table-bordered">
     
-        <thead>
+        <thead  class="text-center">
           <tr>
             <th>#</th>
             <th>Apellidos</th>
@@ -57,14 +65,14 @@
             <th>Operaciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
     
         </tbody>
       </table>
     </div>
     
+    </div>
   </div>
-</div>
   <!-- Fin del card -->
   
   
@@ -255,9 +263,10 @@
         });
       }
 
+      //  EVENTOS
       $("#guardar-estudiante").click(preguntarRegistro);
 
-      //Al cambiar una escuela, se actualizará las carreras
+      //  Al cambiar una escuela, se actualizará las carreras
       $("#escuela").change(function (){
         const idescuelaFiltro = $(this).val();
 
@@ -275,18 +284,37 @@
         });
       });
 
-      //Predeterminamos un control dentro del modal
+      //  Predeterminamos un control dentro del modal
       $("#modal-estudiante").on("shown.bs.modal", event => {
         $("#apellidos").focus();
-
         obtenerSedes();
         obtenerEscuelas();
+      });
+
+      //  Eliminar
+      $("#tabla-estudiantes tbody").on("click", ".eliminar", function(){
+        const idestudianteEliminar = $(this).data("idestudiante");
+
+        if(confirm("¿Estas seguro de proceder?")){
+          $.ajax({
+            url: '../controllers/estudiante.controller.php',
+            type: 'POST',
+            data: {
+              operacion       : 'eliminar',
+              idestudiante    : idestudianteEliminar
+            },
+            success: function(result){
+              if (result == ""){
+                mostrarEstudiantes();
+              }
+            }
+          });
+        }
       });
 
 
       //  ejecucion automatica
       mostrarEstudiantes();
-
     });
   </script>
 

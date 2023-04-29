@@ -14,7 +14,6 @@
   <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-  <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +30,13 @@
 
   <?php include("navbar.php"); ?>
 
-  <div class="container mt-3" id="tabla" style="padding-top: 80px;">
-    <div class="card border border-secondary border-1.5 rounded-2 bg-light shadow">
+  <div class="container mt-3 mb-5" id="tabla" style="padding-top: 80px;">
+    <div class="card border border-secondary border-1.5 rounded-2 bg-light shadow-lg">
       <div class="card-header bg-secondary text-light">
         <div class="row">
 
           <div class="col-md-6">
-            <strong>Lista de colaboradores</strong>
+            <strong>LISTA DE COLABORADORES</strong>
           </div>
 
           <div class="col-md-6 text-end">
@@ -219,8 +218,12 @@
             $("#formulario-colaborador")[0].reset();
             $("#modal-registro-colaborador").modal("hide");
             alert("Guardado correctamente");
-            mostrarColaboradores();
-          }
+          },
+          success: function(result){
+              if (result == ""){
+                mostrarColaboradores();
+              }
+            }
         });
       }
 

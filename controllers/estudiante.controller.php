@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once '../models/Estudiante.php';
 
 if (isset($_POST['operacion'])){
@@ -45,7 +47,7 @@ if (isset($_POST['operacion'])){
       $numeroFila = 1;
       $datosEstudiante = '';
       $botonNulo = "
-        <a href='#' class='btn btn-sm btn-warning' title='No tiene fotografia'>
+        <a href='#' class='btn btn-sm btn-outline-warning' title='No tiene fotografia'>
           <i class='bi bi-x-circle'></i>
         </a>" ;
 
@@ -56,18 +58,18 @@ if (isset($_POST['operacion'])){
         //  La primera parte a RENDERIZAR, es lo standart (siempre se muestra)
         echo "
           <tr>
-            <td>{$numeroFila}</td>
+            <td class='text-center'>{$numeroFila}</td>
             <td>{$registro['apellidos']}</td>
             <td>{$registro['nombres']}</td>
             <td>{$registro['tipodocumento']}</td>
             <td>{$registro['nrodocumento']}</td>
             <td>{$registro['fechanacimiento']}</td>
             <td>{$registro['carrera']}</td>
-            <td>    
-              <a href='#' data-idplato='{$registro['idestudiante']}' class='btn btn-danger btn-sm eliminar'>
+            <td class='text-center'>    
+              <a href='#' data-estudiante='{$registro['idestudiante']}' class='btn btn-outline-danger btn-sm eliminar'>
                 <i class='bi bi-trash3'></i>
               </a>
-              <a href='#' data-idplato='{$registro['idestudiante']}' class='btn btn-success btn-sm editar'>
+              <a href='#' data-idestudiante='{$registro['idestudiante']}' class='btn btn-outline-success btn-sm editar'>
                 <i class='bi bi-pencil'></i>
               <a>";
 
@@ -75,7 +77,7 @@ if (isset($_POST['operacion'])){
             if($registro['fotografia'] == ''){
               echo $botonNulo;
             }else {
-              echo " <a href='../views/img/fotografias/{$registro['fotografia']}' data-lightbox='{$registro['idestudiante']}' data-title='{$datosEstudiante}' class='btn btn-sm btn-warning'>
+              echo " <a href='../views/img/fotografias/{$registro['fotografia']}' data-lightbox='{$registro['idestudiante']}' data-title='{$datosEstudiante}' class='btn btn-sm btn-outline-warning'>
                       <i class='bi bi-eye-fill'></i>
                     </a> ";
             }
@@ -84,9 +86,15 @@ if (isset($_POST['operacion'])){
             echo "</td>
                 </tr>";
 
-          echo("lista de usuarios");
           $numeroFila++;
       }
     }
+  }
+
+  if($_POST['operacion'] == 'eliminar'){
+    $estudiante->eliminarEstudiante($_POST['idestudiante']);
+
+    $estudiante->eliminarFoto($_POST['idestudiante']);
+    
   }
 }

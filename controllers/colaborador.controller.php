@@ -50,15 +50,21 @@ if(isset($_POST['operacion'])){
       foreach($datosObtenidos as $registro){
         $datosColaborador = $registro['nombres']. ' ' . $registro['apellidos'];
 
+        if ($registro['tipocontrato'] == 'C') {
+          $tipoContrato = 'Completo';
+        } elseif ($registro['tipocontrato'] == 'P') {
+          $tipoContrato = 'Parcial';
+        }
+
         echo  "
           <tr>
-            <td>{$numeroFila}</td>
+            <td class='text-center'>{$numeroFila}</td>
             <td>{$registro['nombres']}</td>
             <td>{$registro['apellidos']}</td>
             <td>{$registro['cargo']}</td>
             <td>{$registro['sede']}</td>
             <td>{$registro['telefono']}</td>
-            <td class='text-center'>{$registro['tipocontrato']}</td>
+            <td class='text-center'>{$tipoContrato}</td>
             <td>{$registro['direccion']}</td>
             <td>
               <a href='#' data-idcolaborador='{$registro['idcolaborador']}' class='btn btn-outline-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
@@ -100,37 +106,8 @@ if(isset($_POST['operacion'])){
   }
 
   if($_POST['operacion'] == 'eliminar'){
-
     $colaborador->eliminarColaborador($_POST['idcolaborador']);
-
-    $arrayCola = $colaborador->listarColaboradores();
-
-    
-    // Buscar cv
-    $id_buscado = $_POST['idcolaborador'];
-    $indice = array_search($id_buscado, array_column($arrayCola, 'idcolaborador'));
-
-    if ($indice !== false) {
-        $ruta = $arrayCola[$indice]['cv'];
-
-        // Eliminar el pdf
-        $archivo = "../views/js/eliminarArchivo.js"; // Ruta del archivo script eliminarArchivo.js
-        $nombreArchivo = "../views/doc/pdf/.$ruta"; // Ruta del archivo para eliminar
-        
-        echo $nombreArchivo;
-        print_r($nombreArchivo);
-        var_dump($nombreArchivo);
-  
-        exec("node $archivo $nombreArchivo", $output, $return_var);
-    
-        if ($return_var !== 0) {
-          echo "Se ha producido un error al eliminar el archivo.";
-        } else {
-          echo "El archivo ha sido eliminado exitosamente.";
-        }
-
-    }
-    
+    $colaborador->eliminarPDF($_POST['idcolaborador']);
     
 
   }

@@ -40,7 +40,7 @@ if(isset($_SESSION['login']) && $_SESSION['login']){
 <body>
 
   <div style="padding-top: 80px;">
-    <img src="assets/css/img/users.png" alt="user">
+    <img src="views/img/png/users.png" alt="user">
   </div>
 
   <div class="container mt-5">

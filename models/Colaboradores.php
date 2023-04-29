@@ -50,8 +50,43 @@ class Colaborador extends Conexion{
       $consulta = $this->accesoBD->prepare("CALL spu_colaborador_eliminar(?)");
       $consulta->execute(array($idcolaborador));
 
+      $this->eliminarPDF($idcolaborador);
+
       
     }catch(Exception $e){
+      die($e->getMessage());
+    }
+  }
+
+  //  Método eliminar PDF
+  public function eliminarPDF($idcola = 0){
+    try{
+
+      $datosObtenidos = $this->listarColaboradores();
+  
+      //  buscamos si el id existe, si existe se almacena el indice numerio
+      $indice = array_search($idcola, array_column($datosObtenidos, 'idcolaborador'));
+  
+      // se accede a la condicional si el valor de indice es diferente a falso
+      if ($indice !== false){
+  
+        // accedemos al nombre del archivo con el nombre del array y un indice
+        $nombre = $datosObtenidos[$indice]['cv'];
+  
+        // almacenamos la ruta con juntos con el nombre del archivo
+        $ruta = '../views/doc/pdf/'.$nombre;
+  
+        if(unlink($ruta)){
+          echo "<h1>Archivo a sido borrado</h1>";
+        } else{
+          echo "<h1>El archivo no se pudo borrar</h1>";
+        }
+        
+      } else {
+        echo "<h1> No se encontró al colaborador </h1>";
+      }
+      
+    }catch (Exception $e){
       die($e->getMessage());
     }
   }

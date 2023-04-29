@@ -3,7 +3,7 @@
 <html lang="es">
 
 <head>
-  <title>Registro de usuarios</title>
+  <title>Usuarios</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,10 +15,15 @@
     <!-- Iconos de Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
-  <!-- Data Tables -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    #tabla {
+      font-family: 'Roboto Slab', serif;
+    }
+  </style>
 
 </head>
 
@@ -26,8 +31,8 @@
   <?php include("navbar.php"); ?>
 
 
-  <div class="container mt-3">
-    <div class="card">
+  <div class="container mt-3 mb-5" id="tabla" style="padding-top: 80px;">
+    <div class="card border border-secondary border-1.5 rounded-2 bg-light shadow-lg"">
       <div class="card-header bg-secondary text-light">
         <div class="row">
           <div class="col-md-6">
@@ -35,13 +40,16 @@
           </div>
           <div class="col-md-6 text-end">
             <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-usuarios">
-              <i class="bi bi-plus-circle-fill"></i> Agregar Usuario
+              <i class="bi bi-plus-circle-fill">
+                Agregar Usuario
+              </i>
             </button>
           </div>
         </div>
       </div>
+
       <div class="card-body table-responsive">
-        <table class="table table-sm table-striped" id="tabla-usuarios">
+        <table class="table table-sm table-striped text-nowrap table-bordered" id="tabla-usuarios">
           <colgroup>
             <col width = "5%">
             <col width = "25%">
@@ -50,7 +58,7 @@
             <col width = "10%">
           </colgroup>
 
-          <thead>
+          <thead class="text-center">
             <tr>
               <th>#</th>
               <th>Usuario</th>
@@ -59,7 +67,7 @@
               <th>Operaciones</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-group-divider text-center">
 
           </tbody>
         </table>
@@ -159,7 +167,12 @@
       //  EVENTOS
       $("#guardar-usuario").click(registrarUsuario);
       $("#abrir-modal").click(abrirModal);
-      
+      //  enfocar la primera entrada al abrir el modal
+      $('#modal-registro-usuarios').on("shown.bs.modal", event => {
+        $("#nombreusuario").focus();
+      });
+
+
       $("#tabla-usuarios tbody").on("click", ".eliminar", function(){
         const idusuarioEliminar = $(this).data("idusuario");
 
@@ -203,9 +216,7 @@
             $("#nombres").val(result["nombres"]);
             $("#apellidos").val(result["apellidos"]);
             $("#claveacceso").val(result["claveacceso"]);
-
             $("#modal-titulo").html("Actualizar datos de usuario");
-
             $("#modal-registro-usuarios").modal("show");
           }
         });
@@ -216,9 +227,8 @@
       mostrarUsuarios();
     });
 
-    </script>
+  </script>
     
-
 </body>
 
 </html>

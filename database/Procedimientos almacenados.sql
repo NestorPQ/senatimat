@@ -42,6 +42,18 @@ BEGIN
 	(_apellidos, _nombres, _tipodocumento, _nrodocumento, _fechanacimiento, _idcarrera, _idsede, _fotografia);
 END $$
 
+--  ELIMINAR ESTUDIANTE
+DELIMITER $$
+CREATE PROCEDURE spu_estudiante_eliminar(IN _idestudiante INT)
+BEGIN
+	UPDATE estudiantes
+	SET estado = '0' 
+	WHERE idestudiante = _idestudiante;
+END $$
+
+CALL spu_estudiante_eliminar(7);
+SELECT * FROM estudiantes;
+
 /*
 CALL spu_estudiantes_registrar('Francia Minaya', 'Jhon', 'D', '12345678', '1984-09-20', 5, 1, '');
 CALL spu_estudiantes_registrar('Munayco', 'José', 'D', '77779999', '1999-09-20', 3, 2, NULL);
@@ -319,7 +331,6 @@ CALL spu_colaboradores_registrar('López González', 'Ana', FLOOR(RAND() * 6) + 
 CALL spu_colaboradores_registrar('Pérez Rojas', 'Pedro', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Los Alamos N° 305, Urb. San Agustín, Cusco');
 CALL spu_colaboradores_registrar('Ramos García', 'Laura', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. Grau N° 503, Urb. El Bosque, Lima');
 CALL spu_colaboradores_registrar('González López', 'Javier', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle San Martín N° 405, Urb. Las Palmeras, Piura');
-
 CALL spu_colaboradores_registrar('Sánchez Gutiérrez', 'Luisa', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Av. Los Cedros N° 305, Urb. Las Orquídeas, Tarapoto');
 CALL spu_colaboradores_registrar('Cruz Vargas', 'Carla', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Calle Las Palmas N° 402, Urb. San Juan, Chimbote');
 CALL spu_colaboradores_registrar('Luna Paredes', 'Diego', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Jr. Los Pinos N° 208, Urb. Los Álamos, Huaraz');
@@ -328,3 +339,65 @@ CALL spu_colaboradores_registrar('Fernández Chávez', 'Gonzalo', FLOOR(RAND() *
 CALL spu_colaboradores_registrar('Mendoza Medina', 'Andrea', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'C', NULL, 'Av. La Paz N° 503, Urb. Santa Rosa, Ica');
 CALL spu_colaboradores_registrar('Huamán Flores', 'Oscar', FLOOR(RAND() * 6) + 1, FLOOR(RAND() * 4) + 1, CAST((FLOOR(RAND() * 100000000) + 900000000) AS CHAR(9)), 'P', NULL, 'Calle Los Girasoles N° 405, Urb. Los Ángeles, Juliaca');
 
+-- Registro de usuarios
+CALL spu_usuarios_registrar('john.doe', 'John', 'Doe', '123456');
+CALL spu_usuarios_registrar('alice.jones', 'Alice', 'Jones', 'qwerty');
+CALL spu_usuarios_registrar('michael.smith', 'Michael', 'Smith', 'pass123');
+CALL spu_usuarios_registrar('emily.wilson', 'Emily', 'Wilson', 'secret123');
+CALL spu_usuarios_registrar('david.brown', 'David', 'Brown', 'password');
+CALL spu_usuarios_registrar('sarah.thompson', 'Sarah', 'Thompson', 'abc123');
+CALL spu_usuarios_registrar('james.miller', 'James', 'Miller', 'p@ssw0rd');
+CALL spu_usuarios_registrar('linda.jackson', 'Linda', 'Jackson', 'ilovecats');
+CALL spu_usuarios_registrar('robert.white', 'Robert', 'White', 'securepass');
+CALL spu_usuarios_registrar('jennifer.davis', 'Jennifer', 'Davis', 'letmein123');
+CALL spu_usuarios_registrar('matthew.anderson', 'Matthew', 'Anderson', 'hello123');
+CALL spu_usuarios_registrar('amanda.harris', 'Amanda', 'Harris', 'welcome1');
+CALL spu_usuarios_registrar('william.wilson', 'William', 'Wilson', 'test123');
+CALL spu_usuarios_registrar('olivia.johnson', 'Olivia', 'Johnson', 'changeme');
+CALL spu_usuarios_registrar('daniel.thomas', 'Daniel', 'Thomas', 'newpass123');
+CALL spu_usuarios_registrar('sophia.davis', 'Sophia', 'Davis', 'secretpass');
+CALL spu_usuarios_registrar('jackson.brown', 'Jackson', 'Brown', 'qwerty123');
+CALL spu_usuarios_registrar('emma.wilson', 'Emma', 'Wilson', 'letmein');
+CALL spu_usuarios_registrar('samuel.jones', 'Samuel', 'Jones', 'password1234');
+CALL spu_usuarios_registrar('chloe.smith', 'Chloe', 'Smith', 'pass1234');
+CALL spu_usuarios_registrar('Alan21', 'Alan Gabriel Ludwig', 'García Pérez', 'pass19{+2449');
+CALL spu_usuarios_registrar('JaneSmith', 'Jane', 'Smith', 'S3cur3Pass!');
+CALL spu_usuarios_registrar('CarlosGonzalez', 'Carlos', 'González', 'Passw0rd!');
+CALL spu_usuarios_registrar('EmilyWong', 'Emily', 'Wong', 'StrongP@ssword');
+CALL spu_usuarios_registrar('MohammedAli', 'Mohammed', 'Ali', 'Myp@ss123');
+CALL spu_usuarios_registrar('SophieLefebvre', 'Sophie', 'Lefebvre', 'P@ssword123!');
+CALL spu_usuarios_registrar('HiroshiTanaka', 'Hiroshi', 'Tanaka', 'T4nak@Pass');
+CALL spu_usuarios_registrar('IsabellaMartinez', 'Isabella', 'Martínez', 'M@rtinez1!');
+CALL spu_usuarios_registrar('AntonioRusso', 'Antonio', 'Russo', 'RussoPassw0rd');
+CALL spu_usuarios_registrar('OliviaFischer', 'Olivia', 'Fischer', 'Fisch3rP@ss');
+CALL spu_usuarios_registrar('LuisHernandez', 'Luis', 'Hernández', 'P@ssw0rd456');
+CALL spu_usuarios_registrar('MiaMoreau', 'Mia', 'Moreau', 'MoreauP@ss!');
+CALL spu_usuarios_registrar('RaviPatel', 'Ravi', 'Patel', 'P@t3lPassword');
+CALL spu_usuarios_registrar('EmmaGarcia', 'Emma', 'García', 'G@rc1@Pass');
+CALL spu_usuarios_registrar('AndreasMüller', 'Andreas', 'Müller', 'Müll3rPassw0rd');
+CALL spu_usuarios_registrar('ChihiroSato', 'Chihiro', 'Sato', 'S@t0P@ss');
+CALL spu_usuarios_registrar('AnastasiaKuznetsova', 'Anastasia', 'Kuznetsova', 'Kuzn3ts0va!');
+CALL spu_usuarios_registrar('FelipeFernandez', 'Felipe', 'Fernández', 'Fern@nd3zPass');
+CALL spu_usuarios_registrar('AlessiaRicci', 'Alessia', 'Ricci', 'R1cciP@ss');
+CALL spu_usuarios_registrar('SebastianLopez', 'Sebastián', 'López', 'L0pezS3cur3');
+
+CALL spu_usuarios_registrar('WilliamJohnson', 'William', 'Johnson', 'J0hnsonP@ss');
+CALL spu_usuarios_registrar('SophiaLee', 'Sophia', 'Lee', 'L33P@ssword');
+CALL spu_usuarios_registrar('RaphaelDubois', 'Raphael', 'Dubois', 'Dub0isP@ss');
+CALL spu_usuarios_registrar('EmilySantos', 'Emily', 'Santos', 'S@ntosP@ssw0rd');
+CALL spu_usuarios_registrar('LiamGarcia', 'Liam', 'García', 'G@rc1@P@ssw0rd');
+CALL spu_usuarios_registrar('IsabellaRossi', 'Isabella', 'Rossi', 'R0ss1P@ssw0rd');
+CALL spu_usuarios_registrar('DavidKumar', 'David', 'Kumar', 'Kum@rP@ssw0rd');
+CALL spu_usuarios_registrar('AmeliaIvanova', 'Amelia', 'Ivanova', 'Iv@n0v@P@ss');
+CALL spu_usuarios_registrar('AlexanderSmith', 'Alexander', 'Smith', 'SmithP@ssw0rd');
+CALL spu_usuarios_registrar('MiaLópez', 'Mia', 'López', 'L0p3zP@ssw0rd');
+CALL spu_usuarios_registrar('GabrielAndersen', 'Gabriel', 'Andersen', 'And3rsenP@ss');
+CALL spu_usuarios_registrar('SofiaFernandez', 'Sofia', 'Fernández', 'Fern@nd3zP@ssw0rd');
+CALL spu_usuarios_registrar('BenjaminNguyen', 'Benjamin', 'Nguyen', 'Nguy3nP@ss');
+CALL spu_usuarios_registrar('CharlotteLam', 'Charlotte', 'Lam', 'L@mP@ssw0rd');
+CALL spu_usuarios_registrar('LeoGonzález', 'Leo', 'González', 'G0nz@lezP@ss');
+CALL spu_usuarios_registrar('AvaCheung', 'Ava', 'Cheung', 'Ch3ungP@ssword');
+CALL spu_usuarios_registrar('LucasLefebvre', 'Lucas', 'Lefebvre', 'Lef3bvr3P@ss');
+CALL spu_usuarios_registrar('EmmaMüller', 'Emma', 'Müller', 'Müll3rP@ssw0rd');
+CALL spu_usuarios_registrar('NoahKawamura', 'Noah', 'Kawamura', 'K@w@mur@P@ss');
+CALL spu_usuarios_registrar('OliviaLópez', 'Olivia', 'López', 'L0p3zS3cur3');

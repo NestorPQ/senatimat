@@ -63,8 +63,8 @@ if(isset($_POST['operacion'])){
 					<td>{$usuario['apellidos']}</td>
 
 					<td>
-						<a href='#' data-idusuario='{$usuario['idusuario']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
-						<a href='#' data-idusuario='{$usuario['idusuario']}' class='btn btn-success btn-sm editar'><i class='bi bi-pencil'></i></a>                     
+						<a href='#' data-idusuario='{$usuario['idusuario']}' class='btn btn-outline-danger btn-sm eliminar'><i class='bi bi-trash'></i></a>
+						<a href='#' data-idusuario='{$usuario['idusuario']}' class='btn btn-outline-success btn-sm editar'><i class='bi bi-pencil'></i></a>                     
 					</td>
 				</tr>
 				

@@ -7,46 +7,32 @@ $colaborador = new Colaborador();
 
 $datosObtenidos = $colaborador->listarColaboradores();
 
-echo "<pre>";
-print_r($datosObtenidos);
-echo "</pre>";
+// echo "<pre>";
+// print_r($datosObtenidos);
+// echo "</pre>";
 
 // echo "<pre>";
 // var_dump($datosObtenidos);
 // echo "</pre>";
 
-$id_buscado = 11;
+// Eliminacion de un archivo
+$id_buscado = 140;
 $indice = array_search($id_buscado, array_column($datosObtenidos, 'idcolaborador'));
 
-echo "$indice" ,"=======";
+echo "$indice";
+echo "<br>";
 
 if ($indice !== false) {
     $nombre = $datosObtenidos[$indice]['cv'];
-    echo "El nombre de la persona con ID $id_buscado es: $nombre";
+    echo "El cv de la persona con ID $id_buscado es: $nombre";
+
+    $ruta = "../views/doc/pdf/".$nombre;
+
+    if(unlink($ruta)){
+      echo "Archivo ".$nombre." a sido borrado";
+    } else{
+      echo "El archivo no se pudo borrar";
+    }
 } else {
-    echo "No se encontró una persona con ID $id_buscado";
+    echo 'No se encontró al colaborador $id_buscado';
 }
-
-// eliminar
-$archivo = "../views/js/eliminarArchivo.js"; // Ruta del archivo script eliminarArchivo.js
-$nombreArchivo = "../views/doc/pdf/2faeca65cb46a4f98ae23732c84582335472f5bb.pdf"; // Ruta del archivo para eliminar
-// $nombreArchivo .= $ruta;
-
-exec("node $archivo $nombreArchivo", $output, $return_var);
-
-if ($return_var !== 0) {
-  echo "Se ha producido un error al eliminar el archivo.";
-} else {
-  echo "El archivo ha sido eliminado exitosamente.";
-}
-
-// $hola = $colaborador->listarColaboradores($datosObtenidos[0]['idcolaborador']);
-
-echo '<pre>';
-print_r($hola);
-echo '</pre>';
-
-echo '<pre>';
-echo("node $archivo $nombreArchivo");
-echo '</pre>';
-
